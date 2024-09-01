@@ -1,0 +1,205 @@
+/*================= HTML Default Element ======================= */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid gray;
+  padding: 5px;
+}
+
+input[type="text"] {
+  padding: 3px 9px;
+  margin: 5px;
+  border: 2px solid tomato;
+  width: auto;
+  text-align: center;
+}
+
+button {
+  padding: 5px 11px;
+  margin: 5px;
+}
+
+footer {
+  text-align: center;
+}
+
+/*================= Ticket Booking App ======================= */
+
+.app-title {
+    text-align: center;
+    color: hotpink;
+}
+
+.ticket-app {
+    width: 500px;
+    max-width: 100%;
+    margin: 22px auto;
+    min-height: 300px;
+    padding: 11px;
+    position: relative;
+    border-radius: 5px;
+    box-shadow: 0 0 3px 2px #dedede;
+}
+
+.ticket-app__top {
+    display: flex;
+}
+
+.seat-states {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.seat-state {
+    margin: 3px;
+    min-height: 5px;
+    min-width: 33px;
+    display: flex;
+    margin-right: 22px;
+  }
+
+  .seat-state__color {
+    width: 28px;
+    border: 1px solid gray;
+  }
+
+  .seat-state__text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.4;
+    margin-left: 4px;
+  }
+
+  .ticket-app__bottom {
+    display: flex;
+    margin-top: 15px;
+}
+
+.ticket-app__left {
+  width: 172px;
+}
+
+.bus {
+  border: 1px solid gray;
+  padding: 5px;
+}
+
+.bus__top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bus__door {
+  width: 60px;
+  border: 1px solid gray;
+  padding: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bus__driver {
+  width: 60px;
+  border: 1px solid gray;
+  padding: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.seats {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+
+.seat {
+  margin: 4px;
+  border: 1px solid gray;
+  padding: 3px;
+  min-height: 19px;
+  cursor: pointer;
+  font-size: 15px;
+  width: 100px;
+}
+
+.seat-sold {
+  background-color: red;
+  color: #fff;
+}
+
+.seat-booked {
+  background-color: gray;
+}
+
+.seat-selected {
+  background-color: #00ff00;
+}
+
+.seat:hover {
+  font-weight: bold;
+}
+
+.seat:nth-child(4n - 2) {
+  margin-right: 19px;
+}
+
+.ticket-app__right {
+  flex: 1;
+  padding-left: 22px;
+}
+
+.ticket-app__instruction {
+  flex: 1;
+  display: flex;
+  padding-left: 22px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.cart {
+  text-align: center;
+}
+
+.selected-seats th,
+.selected-seats td {
+  padding: 2px auto;
+  text-align: center;
+}
+
+.info {
+  text-align: center;
+}
+
+.confirm-button {
+  border: 1px solid blue;
+  background-color: #006ea2;
+  color: #fff;
+  cursor: pointer;
+  padding: 5px 44px;
+  width: 98%;
+  margin-top: 10px;
+  font-size: 15px;
+}
+
+.confirmed-dialog {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 9;
+  background-color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  padding: 33px;
+}
+
+.confirmed-dialog h3 {
+  color: green;
+}

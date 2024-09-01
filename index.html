@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solutech Ticket Booking App</title>
+    <link rel="stylesheet" href="src/style.css"/>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        <h1 class="app-title">Solutech Ticket Booking App</h1>
+        <div class="ticket-app">
+            <div class="ticket-app__top">
+                <div class="seat-states">
+                    <div class="seat-state" v-for="(value, key) in seatStates">
+                        <div
+                        class="seat-state__color"
+                        :style="{backgroundColor: value.color}"
+                        ></div>
+                        <div class="seat-state__text">{{ value.text }}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ticket-app__bottom">
+                <div class="ticket-app__left">
+                    <div class="bus">
+                        <div class="bus__top">
+                            <div class="bus__door" style="width:100px;">Destinations</div>
+                            <!-- <div class="bus__driver">Destination</div> -->
+                        </div>
+
+                        <div class="seats">
+                            <div class="seat"
+                            :class="{
+                                'seat-sold': seat.type === 'sold',
+                                'seat-booked': seat.type === 'booked',
+                                'seat-selected': seat.type === 'selected',
+                            }"
+                            v-for="(seat, i) in seats"
+                            :key="seat.name"
+                            @click="handleClick(i)"
+                            >{{ seat.name }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ticket-app__instruction"
+                v-if="selectedSeats.length === 0"
+                >
+                No Tours has been selected.<br/>
+                You can purchase more than 1 ticket.
+                </div>
+                <div class="ticket-app__right" v-else>
+                    <div class="cart">
+                        <strong>Selected Destination(s)</strong>
+                        <table class="selected-seats">
+                            <thead>
+                                <tr>
+                                    <th>Destination Tour</th>
+                                    <th>Price (TK.)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(seat, i) in selectedSeats" :key="seat.name">
+                                    <td>{{seat.name}}</td>
+                                    <td>{{seat.price}}</td>
+                                </tr>
+
+                                <tr v-if="appliedCoupon !== null">
+                                    <th>Discount</th>
+                                    <th>- {{ appliedCoupon.discount }}</th>
+                                </tr>
+
+                                <tr>
+                                    <th>Total</th>
+                                    <th>TK. {{totalCost}}</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p v-if="appliedCoupon === null">
+                            Put The Correct Email To Recieve Tour Ticket Through
+                          
+                        </p>
+                        <p v-else>Applied Coupon: {{ appliedCoupon.code }}</p>
+                    </div>
+
+                    <div class="info">
+                        <label>Name: </label><input type="text"  v-model="name" placeholder="Patrick Eshikumo" required>
+                        <br/>
+                        <label>Email: </label><input type="text"  v-model="email" placeholder="patoh@gmail.com" required>
+                        
+                    </div>
+
+                    <button class="confirm-button" @click="confirm">Confirm</button>
+                </div>
+            </div>
+
+            <div class="confirmed-dialog" v-if="confirmed">
+                <h3>Ticket Confirmed !</h3>
+                <hr/>
+                <br/>
+                <table class="selected-seats">
+                    <tr>
+                        <th>Full Names</th>
+                        <td>{{ name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>{{ email }}</td>
+                    </tr>
+                    <tr>
+                        <th>Tour</th>
+                        <td>
+                            <div v-for="(seat, i) in selectedSeats" :key="name">
+                                <div>{{ seat.name }}</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Total Cost</th>
+                        <td>{{ totalCost}}</td>
+                    </tr>
+                </table>
+                <br/>
+
+                <button class="confirm-button" @click="resetData">Booked Again</button>
+            </div>
+        </div>
+
+   
+
+
+    <script src="src/app.js"></script>
+</body>
+</html>
